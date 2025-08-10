@@ -9,10 +9,10 @@ import {
   Service,
   HAP,
 } from "homebridge";
-import { PLUGIN_NAME } from "./settings";
-import { WLEDPlatform } from "./wled-platform";
-import { httpSendData} from "./utils";
-const WebSocket = require('ws').WebSocket;
+import { PLUGIN_NAME } from "./settings.js";
+import { WLEDPlatform } from "./wled-platform.js";
+import { httpSendData } from "./utils.js";
+import { WebSocket } from "ws";
 
 interface Preset {
   id: number;
