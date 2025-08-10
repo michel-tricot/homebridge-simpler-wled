@@ -8,9 +8,9 @@ import {
     Service,
     Characteristic
 } from "homebridge";
-import { WLEDAccessory } from "./wled-accessory";
-import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
-import { loadEffects, loadPresets } from "./utils";
+import { WLEDAccessory } from "./wled-accessory.js";
+import { PLATFORM_NAME, PLUGIN_NAME } from './settings.js';
+import { loadEffects, loadPresets } from "./utils.js";
 
 export class WLEDPlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
@@ -87,18 +87,18 @@ export class WLEDPlatform implements DynamicPlatformPlugin {
         // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [existingAccessory]);
         // this.log.info('Removing existing accessory from cache:', existingAccessory.displayName);
 
-        loadPresets(wled.host)
-            .then((presets)=>{
-              return presets;
-            })
-            .then((presets)=>{
-              // console.log(presets);
-              console.log('loading up existing accessory');
-              new WLEDAccessory(this, existingAccessory, wled, presets);
-            })
-            .catch((error) => {
-              console.log(error)
-            });
+          loadPresets(wled.host)
+              .then((presets: any) => {
+                return presets;
+              })
+              .then((presets: any) => {
+                // console.log(presets);
+                console.log('loading up existing accessory');
+                new WLEDAccessory(this, existingAccessory, wled, presets);
+              })
+              .catch((error: unknown) => {
+                console.log(error);
+              });
 
         // it is possible to remove platform accessories at any time using `api.unregisterPlatformAccessories`, eg.:
         // remove platform accessories when no longer present
@@ -116,18 +116,18 @@ export class WLEDPlatform implements DynamicPlatformPlugin {
 
         // create the accessory handler for the newly create accessory
         // this is imported from `platformAccessory.ts`
-        loadPresets(wled.host)
-          .then((presets)=>{
-            return presets;
-          })
-          .then((presets)=>{
-            new WLEDAccessory(this, accessory, wled, presets);
-            console.log('registering accessory');
-            this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);
-          })
-          .catch((error) => {
-            console.log(error)
-          });
+          loadPresets(wled.host)
+            .then((presets: any) => {
+              return presets;
+            })
+            .then((presets: any) => {
+              new WLEDAccessory(this, accessory, wled, presets);
+              console.log('registering accessory');
+              this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);
+            })
+            .catch((error: unknown) => {
+              console.log(error);
+            });
 
         // link the accessory to your platform
         

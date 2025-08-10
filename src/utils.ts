@@ -1,4 +1,4 @@
-const axios = require('axios').default;
+import axios from 'axios';
 
 interface Preset {
     n: string;
@@ -6,8 +6,9 @@ interface Preset {
   }
 
 export function httpSendData(url: string, method: string, data: object, callback: Function): void {
+    const ax: any = axios as any;
     if (method.toLowerCase() == "post") {
-        axios.post(String(url), data)
+        ax.post(String(url), data)
             .then(function (response: any) {
                 callback(null, response)
             })
@@ -15,7 +16,7 @@ export function httpSendData(url: string, method: string, data: object, callback
                 callback(error, null)
             });
     } else if (method.toLowerCase() == "get") {
-        axios.get(url)
+        ax.get(url)
             .then(function (response: any) {
                 callback(null, response)
             })

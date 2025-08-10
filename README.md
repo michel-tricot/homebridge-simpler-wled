@@ -2,6 +2,8 @@
 
 Homebridge Plugin for WLED Strip ([WLED-Project by Aircoookie](https://github.com/Aircoookie/WLED))
 
+This version has been updated to support Homebridge v2 and Node.js 18+.
+
 ### ⚙️ Installation / NPM Package
 For downloading and installing the Plugin NPM is used in Homebridge: [Link to NPM Package](https://www.npmjs.com/package/homebridge-wled-presets)
 
